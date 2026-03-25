@@ -1,0 +1,18 @@
+// JSX를 사용한 Element 생성
+const element = (
+    <div>
+        <h1>Hello, world!</h1>
+        <p>Welcome to my website.</p>
+    </div>
+);
+
+// React.createElement()를 사용한 Element 생성
+    const element = React.createElement(
+    'div',
+    null,
+    React.createElement('h1', null, 'Hello, world!'),
+    React.createElement('p', null, 'Welcome to my website.')
+);
+// Element 렌더링
+
+ReactDOM.render(element, document.getElementById('root'));  
