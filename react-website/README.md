@@ -3,7 +3,6 @@
 최신 트렌드를 반영한 다크 테마(Dark Theme)와 글래스모피즘(Glassmorphism) 기반의 모던 React 웹사이트입니다.
 
 ## 🔗 Live Demo (배포 링크)
-*아래 링크를 실제 사이트 주소로 교체해 주세요!*
 - **URL:** https://webprogramming-liard.vercel.app/
 
 ## 🛠 Features (주요 기능)
