@@ -4,7 +4,7 @@
 
 ## 🔗 Live Demo (배포 링크)
 *아래 링크를 실제 사이트 주소로 교체해 주세요!*
-- **URL:** [https://your-deployment-url.vercel.app](https://your-deployment-url.vercel.app)
+- **URL:** https://webprogramming-liard.vercel.app/
 
 ## 🛠 Features (주요 기능)
 - **Navbar:** 블러 처리된 상단 네비게이션 바
