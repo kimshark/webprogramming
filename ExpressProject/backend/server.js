@@ -45,8 +45,9 @@ app.get('/api/score', (req, res) => {
 
 // 3. 리액트 정적 파일 서빙
 // path.join 대신 path.resolve를 사용하여 경로를 더 확실하게 잡습니다.
-const buildPath = path.resolve(__dirname, '..', '..', 'frontend', 'build');
+const buildPath = path.resolve(__dirname, '..', 'frontend', 'build');
 app.use(express.static(buildPath));
+console.log("실제 탐색 경로:", buildPath); // 로그로 경로를 확인해 보세요!
 
 app.use((req, res) => {
     const indexPath = path.join(buildPath, 'index.html');
