@@ -11,7 +11,6 @@ function App() {
     codeUrl: "/UnityGame/Build/GameForder.wasm",
   });
 
-  // 점수 목록 불러오기
   const fetchScores = () => {
     fetch("/api/score")
       .then((res) => res.json())
@@ -21,21 +20,17 @@ function App() {
 
   useEffect(() => {
     fetchScores();
-    const interval = setInterval(fetchScores, 5000); // 5초마다 갱신
+    const interval = setInterval(fetchScores, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div style={{ textAlign: "center", padding: "20px", backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
-      <h1>🎮 Unity Express</h1>
-      
+      <h1>🎮 Express Unity project (배포 버전)</h1>
       <div style={{ display: "flex", justifyContent: "center", gap: "20px", flexWrap: "wrap" }}>
-        {/* 유니티 게임 화면 */}
         <div style={{ width: "800px", height: "600px", background: "#000", borderRadius: "10px", overflow: "hidden", boxShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
           <Unity unityProvider={unityProvider} style={{ width: "100%", height: "100%" }} />
         </div>
-
-        {/* 실시간 랭킹 보드 */}
         <div style={{ width: "300px", background: "#fff", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}>
           <h2 style={{ borderBottom: "2px solid #333", paddingBottom: "10px" }}>🏆 실시간 랭킹</h2>
           <ul style={{ listStyle: "none", padding: 0 }}>
@@ -46,7 +41,7 @@ function App() {
                 </li>
               ))
             ) : (
-              <p>아직 기록이 없습니다.</p>
+              <p>기록을 불러오는 중...</p>
             )}
           </ul>
         </div>
