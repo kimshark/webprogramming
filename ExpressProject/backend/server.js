@@ -41,23 +41,28 @@ app.get('/api/score', (req, res) => {
     });
 });
 
-// --- 수정된 핵심 구간 ---
+// 3. [신규] 점수 전체 초기화 API
+app.post('/api/score/reset', (req, res) => {
+    fs.writeFile(DATA_FILE, JSON.stringify([], null, 2), (err) => {
+        if (err) return res.status(500).send("Reset Error");
+        res.status(200).json([]);
+    });
+});
 
-// 3. 리액트 정적 파일 서빙
-// path.join 대신 path.resolve를 사용하여 경로를 더 확실하게 잡습니다.
+// 4. 리액트 정적 파일 서빙
 const buildPath = path.resolve(__dirname, '..', 'frontend', 'build');
 app.use(express.static(buildPath));
-console.log("실제 탐색 경로:", buildPath); // 로그로 경로를 확인해 보세요!
 
-app.use((req, res) => {
+// 5. 모든 경로를 index.html로 연결 (404 방지)
+app.use((req, res, next) => {
     const indexPath = path.join(buildPath, 'index.html');
     if (fs.existsSync(indexPath)) {
         res.sendFile(indexPath);
     } else {
-        res.status(404).send("Build file not found");
+        next();
     }
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
