@@ -18,7 +18,7 @@ function App() {
     let isMounted = true;
 
     const fetchData = () => {
-      fetch('http://localhost:5000/api/score')
+      fetch('/api/score')
         .then(res => res.json())
         .then(data => {
           if (isMounted) {
@@ -44,7 +44,7 @@ function App() {
   const resetScores = async () => {
     if (window.confirm("정말로 모든 기록을 삭제하시겠습니까?")) {
       try {
-        const response = await fetch('http://localhost:5000/api/score/all', {
+        const response = await fetch('/api/score/all', {
           method: 'DELETE',
         });
         if (response.ok) {
