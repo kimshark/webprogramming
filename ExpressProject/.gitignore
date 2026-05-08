@@ -1,0 +1,22 @@
+# 의존성 라이브러리 (npm install로 설치되는 것들)
+node_modules/
+
+# 리액트 빌드 결과물 (배포 서버가 직접 빌드할 예정)
+frontend/build/
+frontend/.pnp
+frontend/.pnp.js
+
+# 로그 및 시스템 임시 파일
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# 유니티 관련 임시 파일 (혹시 프로젝트 안에 유니티 원본이 있다면)
+/[Xx]86*/
+/[Xx]64*/
+Library/
+Temp/
+Obj/
+Build/
