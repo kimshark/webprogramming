@@ -7,10 +7,10 @@ function App() {
 
   // 유니티 컨텍스트 설정 (파일명: GameForder)
   const { unityProvider } = useUnityContext({
-    loaderUrl: "UnityGame/Build/GameForder.loader.js",
-    dataUrl: "UnityGame/Build/GameForder.data",
-    frameworkUrl: "UnityGame/Build/GameForder.framework.js",
-    codeUrl: "UnityGame/Build/GameForder.wasm",
+    loaderUrl: "/UnityGame/Build/GameForder.loader.js",
+    dataUrl: "/UnityGame/Build/GameForder.data",
+    frameworkUrl: "/UnityGame/Build/GameForder.framework.js",
+    codeUrl: "/UnityGame/Build/GameForder.wasm",
   });
 
   // 실시간 점수 데이터 가져오기 (3초마다 업데이트)
