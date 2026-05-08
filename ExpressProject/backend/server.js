@@ -48,16 +48,12 @@ app.get('/api/score', (req, res) => {
 const buildPath = path.resolve(__dirname, '..', '..', 'frontend', 'build');
 app.use(express.static(buildPath));
 
-// 4. 모든 경로를 index.html로 연결
-// 에러 방지를 위해 경로 패턴 없이 직접 함수를 연결합니다.
-app.get('*', (req, res) => {
+app.use((req, res) => {
     const indexPath = path.join(buildPath, 'index.html');
-    
-    // 파일이 실제로 있는지 체크해서 서버가 죽는 것을 방지합니다.
     if (fs.existsSync(indexPath)) {
         res.sendFile(indexPath);
     } else {
-        res.status(404).send("리액트 빌드 파일을 찾을 수 없습니다. (경로: " + buildPath + ")");
+        res.status(404).send("Build file not found");
     }
 });
 
