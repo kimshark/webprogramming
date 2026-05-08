@@ -43,9 +43,9 @@ app.delete('/api/score/all', (req, res) => {
 });
 
 // [중요] 사용자가 어떤 주소로 들어오든 리액트 화면(index.html)을 보여줍니다.
-app.get('*', (req, res) => {
+app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
+  });
 
 app.listen(PORT, () => {
     console.log(`배포 서버 실행 중: 포트 ${PORT}`);
