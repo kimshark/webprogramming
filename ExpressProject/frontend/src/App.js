@@ -5,10 +5,10 @@ function App() {
   const [scores, setScores] = useState([]);
 
   const { unityProvider } = useUnityContext({
-    loaderUrl: "/UnityGame/Build/GameForder.loader.js",
-    dataUrl: "/UnityGame/Build/GameForder.data",
-    frameworkUrl: "/UnityGame/Build/GameForder.framework.js",
-    codeUrl: "/UnityGame/Build/GameForder.wasm",
+    loaderUrl: "/UnityGame/Build/Game.loader.js",
+    dataUrl: "/UnityGame/Build/Game.data",
+    frameworkUrl: "/UnityGame/Build/Game.framework.js",
+    codeUrl: "/UnityGame/Build/Game.wasm",
   });
 
   const fetchScores = () => {
