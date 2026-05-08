@@ -26,23 +26,19 @@ function App() {
 
   return (
     <div style={{ textAlign: "center", padding: "20px", backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
-      <h1>🎮 Express Unity project (배포 버전)</h1>
+      <h1>🎮 Project Express Unity</h1>
       <div style={{ display: "flex", justifyContent: "center", gap: "20px", flexWrap: "wrap" }}>
         <div style={{ width: "800px", height: "600px", background: "#000", borderRadius: "10px", overflow: "hidden", boxShadow: "0 4px 15px rgba(0,0,0,0.3)" }}>
           <Unity unityProvider={unityProvider} style={{ width: "100%", height: "100%" }} />
         </div>
         <div style={{ width: "300px", background: "#fff", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}>
-          <h2 style={{ borderBottom: "2px solid #333", paddingBottom: "10px" }}>🏆 실시간 랭킹</h2>
+          <h2>🏆 Top 10</h2>
           <ul style={{ listStyle: "none", padding: 0 }}>
-            {scores.length > 0 ? (
-              scores.map((s, index) => (
-                <li key={index} style={{ padding: "10px 0", borderBottom: "1px solid #eee", fontSize: "18px" }}>
-                  <strong>{index + 1}위.</strong> {s.name} : <span style={{ color: "#e74c3c", fontWeight: "bold" }}>{s.score}점</span>
-                </li>
-              ))
-            ) : (
-              <p>기록을 불러오는 중...</p>
-            )}
+            {scores.map((s, i) => (
+              <li key={i} style={{ padding: "8px 0", borderBottom: "1px solid #eee" }}>
+                {i + 1}위. {s.name} : <strong>{s.score}</strong>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

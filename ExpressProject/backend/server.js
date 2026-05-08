@@ -1,11 +1,10 @@
-
 const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 10000; // Render 포트 대응
+const PORT = process.env.PORT || 10000;
 const DATA_FILE = path.join(__dirname, 'scores.json');
 
 app.use(cors());
@@ -42,14 +41,24 @@ app.get('/api/score', (req, res) => {
     });
 });
 
-// 3. 리액트 정적 파일 서빙 (경로를 절대경로로 확실히 잡음)
-// ExpressProject/frontend/build 위치를 정확히 가리켜야 합니다.
-const buildPath = path.join(__dirname, '../../frontend/build');
+// --- 수정된 핵심 구간 ---
+
+// 3. 리액트 정적 파일 서빙
+// path.join 대신 path.resolve를 사용하여 경로를 더 확실하게 잡습니다.
+const buildPath = path.resolve(__dirname, '..', '..', 'frontend', 'build');
 app.use(express.static(buildPath));
 
-// 4. [핵심] 모든 경로를 index.html로 연결 (에러 유발 구문 삭제됨)
+// 4. 모든 경로를 index.html로 연결
+// 에러 방지를 위해 경로 패턴 없이 직접 함수를 연결합니다.
 app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
+    const indexPath = path.join(buildPath, 'index.html');
+    
+    // 파일이 실제로 있는지 체크해서 서버가 죽는 것을 방지합니다.
+    if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        res.status(404).send("리액트 빌드 파일을 찾을 수 없습니다. (경로: " + buildPath + ")");
+    }
 });
 
 app.listen(PORT, () => {
