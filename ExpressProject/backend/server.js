@@ -43,7 +43,7 @@ app.delete('/api/score/all', (req, res) => {
 });
 
 // [중요] 사용자가 어떤 주소로 들어오든 리액트 화면(index.html)을 보여줍니다.
-app.get('*', function(req, res) {
+app.get('(/.*)?', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
   });
 
