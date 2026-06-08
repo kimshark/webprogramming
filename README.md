@@ -10,7 +10,7 @@
   - My-app 제작
     
 3/25 
-  -Vercel 배포
+  - Vercel 배포
 
 4/1   
   - props 
